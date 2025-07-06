@@ -1,10 +1,32 @@
 # Xavier Prose
 
+**⚠️ Experimental Framework** - Xavier Prose is an experimental system that repurposes Claude Code for writing. It requires comfort with command-line tools, Git, and code editors.
+
 Transform Claude Code into a powerful prose development system.
 
 ## What is Xavier Prose?
 
 Xavier Prose repurposes Claude Code for creative writing and long-form prose instead of software development. It uses **cognitive reframing** to transform coding concepts into prose-focused workflows:
+
+### Who Is This For?
+
+Xavier Prose is designed for **technically-minded writers** who are comfortable with:
+- **Command line interfaces** (Terminal/PowerShell)
+- **Git version control** (or willing to learn)
+- **Code editors** for writing (VS Code, Vim, etc.)
+- **Markdown formatting** for content creation
+
+**Not for you if**: You prefer traditional writing tools like Word, Google Docs, or Scrivener without technical workflows.
+
+### Prerequisites
+
+Before using Xavier Prose, you need:
+1. **Claude Code installed** - [Installation Guide](https://docs.anthropic.com/en/docs/claude-code/quickstart)
+2. **Git** - For version control and submodules
+3. **Code editor** - VS Code, Vim, or similar
+4. **Terminal/Command Prompt** - Basic command line comfort
+
+### Cognitive Reframing Concept
 
 - **"Codebase"** → **"Content Universe"** (interconnected story elements)
 - **"Dependencies"** → **"Content Consistency"** (established facts and character traits)
@@ -199,6 +221,21 @@ cd ..
 git add xavier-prose
 git commit -m "Update Xavier Prose framework"
 ```
+
+## Support
+
+### GitHub Authentication (Optional)
+
+For the feedback system to submit improvements automatically:
+1. **Install GitHub CLI**: [https://cli.github.com/](https://cli.github.com/)
+2. **Authenticate**: Run `gh auth login`
+3. **Note**: You cannot create issues directly in our repository. Feedback will be saved locally and can be manually submitted.
+
+### Alternative Feedback
+If you don't want to set up GitHub CLI:
+- Feedback is saved locally in `.xavier-prose/feedback.json`
+- Manually copy feedback to [create issues](https://github.com/MichaelSchmidle/xavier-prose/issues/new)
+- Or use `/feedback "your feedback here"` for local collection only
 
 ## Support
 

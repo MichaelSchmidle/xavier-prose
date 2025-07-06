@@ -68,10 +68,16 @@ case $ACTION in
             echo "**Option 1**: Install GitHub CLI"
             echo "- Visit: https://cli.github.com/"
             echo "- Run: \`gh auth login\` after installation"
+            echo "- Then retry: \`/feedback sync\`"
             echo ""
             echo "**Option 2**: Manual submission"
             echo "- Visit: https://github.com/MichaelSchmidle/xavier-prose/issues/new"
             echo "- Copy feedback from: \`.xavier-prose/feedback.json\`"
+            echo "- Paste as issue description"
+            echo ""
+            echo "**Option 3**: Keep local only"
+            echo "- Feedback remains in \`.xavier-prose/feedback.json\`"
+            echo "- Use for your own project improvements"
             echo ""
             exit 1
         fi
@@ -79,7 +85,16 @@ case $ACTION in
         # Check GitHub authentication
         if ! gh auth status &>/dev/null; then
             echo "⚠️  Not authenticated with GitHub."
-            echo "Run: \`gh auth login\`"
+            echo ""
+            echo "**Setup required:**"
+            echo "1. Run: \`gh auth login\`"
+            echo "2. Follow the authentication prompts"
+            echo "3. Retry: \`/feedback sync\`"
+            echo ""
+            echo "**Alternative**: Manual submission"
+            echo "- Visit: https://github.com/MichaelSchmidle/xavier-prose/issues/new"
+            echo "- Copy feedback from: \`.xavier-prose/feedback.json\`"
+            echo ""
             exit 1
         fi
         
