@@ -7,6 +7,7 @@ Initialize a new Xavier Prose project with complete directory structure and conf
 2. Sets up manuscript/, bible/, planning/, style-guide/ directories
 3. Creates template files for prose project management
 4. Configures git repository for prose workflow
+5. Optionally sets up automated prose quality control hooks
 
 ## Usage:
 ```
@@ -51,6 +52,33 @@ git commit -m "Initialize Xavier Prose project
 🤖 Generated with [Claude Code](https://claude.ai/code)
 
 Co-Authored-By: Claude <noreply@anthropic.com>"
+
+# Optional: Setup hooks for automated prose quality control
+read -p "Would you like to set up automated prose quality control hooks? (y/n): " -n 1 -r
+echo
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+    echo "🔧 Setting up Xavier Prose hooks..."
+    
+    # Create hooks directory
+    mkdir -p hooks
+    
+    # Copy hook scripts
+    cp xavier-prose/hooks/prose-validation.sh ./hooks/
+    cp xavier-prose/hooks/auto-bible-update.sh ./hooks/
+    cp xavier-prose/hooks/progress-tracker.sh ./hooks/
+    
+    # Make scripts executable
+    chmod +x ./hooks/*.sh
+    
+    # Copy hooks configuration
+    cp xavier-prose/hooks/hooks.json ./hooks/
+    
+    echo "✅ Hooks installed!"
+    echo "📋 Edit hooks/hooks.json to customize hook behavior"
+    echo "🔧 Configure Claude Code to use hooks: Settings → Hooks → Enable"
+else
+    echo "⏭️  Skipping hooks setup"
+fi
 
 echo "✅ Xavier Prose project initialized!"
 echo "📝 CLAUDE.md created - Claude Code will now operate in prose mode"

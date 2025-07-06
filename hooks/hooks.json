@@ -1,0 +1,19 @@
+{
+  "hooks": {
+    "PreToolUse": {
+      "command": "./hooks/prose-validation.sh",
+      "description": "Validates prose consistency before Edit/Write operations",
+      "enabled": true
+    },
+    "PostToolUse": {
+      "command": "./hooks/auto-bible-update.sh", 
+      "description": "Auto-extracts facts and elements after successful prose operations",
+      "enabled": true
+    },
+    "Notification": {
+      "command": "./hooks/progress-tracker.sh",
+      "description": "Tracks writing session metrics and progress",
+      "enabled": true
+    }
+  }
+}
