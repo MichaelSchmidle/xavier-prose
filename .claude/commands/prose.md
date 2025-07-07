@@ -8,6 +8,7 @@ Initialize a new Xavier Prose project with complete directory structure and conf
 3. Creates template files for prose project management
 4. Configures git repository for prose workflow
 5. Optionally sets up automated prose quality control hooks
+6. Optionally enables automatic CLAUDE.md updates on commits
 
 ## Usage:
 ```
@@ -78,6 +79,40 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
     echo "🔧 Configure Claude Code to use hooks: Settings → Hooks → Enable"
 else
     echo "⏭️  Skipping hooks setup"
+fi
+
+# Optional: Setup CLAUDE.md auto-sync on commits
+read -p "Would you like CLAUDE.md to be automatically updated when you commit changes? (y/n): " -n 1 -r
+echo
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+    echo "🔧 Setting up CLAUDE.md auto-sync..."
+    
+    # Create .claude directory and settings
+    mkdir -p .claude
+    cp xavier-prose/templates/.claude/settings.json ./.claude/
+    
+    # Enable auto-sync in settings
+    sed -i 's/"XAVIER_PROSE_AUTO_SYNC": "false"/"XAVIER_PROSE_AUTO_SYNC": "true"/' .claude/settings.json
+    
+    # Copy sync script and setup git hook
+    cp xavier-prose/templates/claude-md-sync.sh ./
+    cp xavier-prose/templates/setup-auto-sync.sh ./
+    
+    # Install git pre-commit hook if none exists
+    if [[ ! -f ".git/hooks/pre-commit" ]]; then
+        cp claude-md-sync.sh .git/hooks/pre-commit
+        chmod +x .git/hooks/pre-commit
+        echo "✅ Git pre-commit hook installed!"
+    else
+        echo "⚠️  Git pre-commit hook already exists. Run './setup-auto-sync.sh' to configure."
+    fi
+    
+    echo "✅ CLAUDE.md auto-sync enabled!"
+    echo "📝 CLAUDE.md will now be updated automatically when you commit changes"
+    echo "🔧 Run './setup-auto-sync.sh' anytime to enable/disable this feature"
+else
+    echo "⏭️  Skipping auto-sync setup"
+    echo "💡 You can enable this later by running the xavier-prose setup-auto-sync script"
 fi
 
 echo "✅ Xavier Prose project initialized!"

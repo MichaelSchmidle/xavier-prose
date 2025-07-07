@@ -1,0 +1,6 @@
+{
+  "env": {
+    "XAVIER_PROSE_AUTO_SYNC": "false"
+  },
+  "description": "Xavier Prose configuration - Enable XAVIER_PROSE_AUTO_SYNC to automatically update CLAUDE.md on commits"
+}
