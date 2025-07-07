@@ -152,6 +152,10 @@ Enhance `progress-tracker.sh` with:
 - Keep hooks updated with Xavier Prose releases
 - Monitor hook execution for unexpected behavior
 
+## Development Mode Hook
+
+In xavier-prose development mode, there's also a git pre-commit hook that automatically updates CLAUDE.md based on committed changes, keeping the framework documentation synchronized with actual implementation progress.
+
 ## Support
 
 For hook-related issues:
